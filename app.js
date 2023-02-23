@@ -49,11 +49,20 @@ const chart = new Chart(canvas, {
     plugins: [plugin]
 });
 
-// Generate data for the x^2 function and add it to the chart
-for (let x = -10; x <= 10; x += 0.1) {
-    const y = x * x;
-    chart.data.labels.push(x.toFixed(1)); // use toFixed() to round the label to 1 decimal place
-    chart.data.datasets[0].data.push(y);
+function updateData() {
+    // Generate data for the x^2 function and add it to the chart
+    for (let x = -10; x <= 10; x += 0.5) {
+        const y = x * x + Math.random() * 10 - 5; // add some random noise to the function
+        chart.data.labels.push(x.toFixed(1)); // use toFixed() to round the label to 1 decimal place
+        chart.data.datasets[0].data.push(y);
+    }
+
+    chart.update();
+
+    // Remove the old data from the chart
+    chart.data.labels = [];
+    chart.data.datasets[0].data = [];
 }
 
-chart.update();
+setInterval(updateData, 1000); // call updateData every 1 seconds
+
