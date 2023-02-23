@@ -20,7 +20,7 @@ const chart = new Chart(canvas, {
     data: {
         labels: [], // Labels for the x-axis
         datasets: [{
-            label: 'y = x^2', // Label for the dataset
+            label: 'function', // Label for the dataset
             data: [], // Data for the dataset
             pointRadius: 0,
             backgroundColor: '#FF007F', // Transparent background color
@@ -52,7 +52,7 @@ const chart = new Chart(canvas, {
 function updateData() {
     // Generate data for the x^2 function and add it to the chart
     for (let x = -10; x <= 10; x += 0.5) {
-        const y = x * x + Math.random() * 10 - 5; // add some random noise to the function
+        const y = x * x + Math.random() * 5 - 2.5; // add some random noise to the function
         chart.data.labels.push(x.toFixed(1)); // use toFixed() to round the label to 1 decimal place
         chart.data.datasets[0].data.push(y);
     }
